@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
 import Swal from "sweetalert2";
 
-export default function admins() {
+export default function Admins() {
   const [admins, setAdmins] = useState([]);
   const [adminEmail, setAdminEmail] = useState("");
   const [userName, setUserName] = useState("");
@@ -146,7 +146,7 @@ export default function admins() {
           </label>
           <div className="flex flex-wrap gap-1 mb-4 mr-2">
             {image && (
-              <img className="w-24 h-24 gap-1 rounded-md" src={image} />
+              <img className="w-24 h-24 gap-1 rounded-md" alt="" src={image} />
             )}
             {isUploading && (
               <div className=" w-24 h-24 cursor-pointer text-center flex flex-col items-center justify-center text-sm gap-1 text-primary rounded-md bg-white shadow-sm border border-primary">

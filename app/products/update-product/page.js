@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 // import Router from "next/router";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function updateProduct() {
+export default function UpdateProduct() {
   const [product, setProduct] = useState(null);
 
   const searchParams = useSearchParams();

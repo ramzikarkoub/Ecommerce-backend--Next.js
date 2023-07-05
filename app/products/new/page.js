@@ -5,7 +5,7 @@ import { useSession } from "next-auth/react";
 // import Router from "next/router";
 import { useRouter } from "next/navigation";
 
-export default function createProduct() {
+export default function CreateProduct() {
   const { data: session } = useSession();
   // const [isSubmitting, setIsSubmitting] = useState(false);
   // const [product, setProduct] = useState({

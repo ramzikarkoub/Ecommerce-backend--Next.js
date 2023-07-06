@@ -7,6 +7,7 @@ export const GET = async (request) => {
   const sess = await getServerSession(authOptions);
   if (sess === null) return;
   try {
+    await connectToDB();
     const categories = await Category.find().populate("parentCategory");
     return new Response(JSON.stringify(categories), {
       status: 200,

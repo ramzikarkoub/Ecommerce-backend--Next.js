@@ -7,14 +7,15 @@ export default function Products() {
   useEffect(() => {
     const fetchProducts = async () => {
       const response = await fetch("api/product");
+      console.log(response);
       const data = await response.json();
+      console.log(data);
 
       setproducts(data);
     };
     fetchProducts();
-    console.log(products);
   }, []);
-
+  console.log(products);
   // const handleEdit = (product) => {
   //   router.push(`/update-product?id=${product._id}`);
   // };

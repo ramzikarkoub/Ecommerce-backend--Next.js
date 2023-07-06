@@ -14,8 +14,8 @@ export default function Nav() {
   const router = useRouter();
 
   async function logOut() {
-    await router.push("/");
     await signOut();
+    window.location.href = "/";
   }
 
   return (

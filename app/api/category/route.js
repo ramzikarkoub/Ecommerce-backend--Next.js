@@ -1,7 +1,7 @@
 import { connectToDB } from "/utils/database";
 import Category from "/models/category";
 import { getServerSession } from "next-auth";
-import { authOptions, isAdminRequest } from "../auth/[...nextauth]/route";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 export const GET = async (request) => {
   const sess = await getServerSession(authOptions);

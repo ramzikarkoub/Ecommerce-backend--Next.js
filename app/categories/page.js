@@ -21,7 +21,6 @@ export default function Categories() {
   const fetchCategories = async () => {
     const response = await fetch("api/category");
     const data = await response.json();
-
     setCategories(data);
   };
   useEffect(() => {

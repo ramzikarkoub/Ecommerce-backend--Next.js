@@ -21,17 +21,20 @@ export default function OrdersPage() {
       <table className="basic mt-6">
         <thead className="text-sm text-gray-600 uppercase border-b border-gray-200 px-4 py-2">
           <tr>
-            <th>ID</th>
+            <th>Date</th>
             <th>Recipient</th>
             <th>Products</th>
+            <th>Quantity</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className="basic">
           {orders?.length > 0 &&
             orders.map((order) => (
               <tr key={order._id}>
-                <td>{order._id}</td>
-                <td>
+                <td className="border-2 text-center">
+                  {new Date(order.createdAt).toLocaleString()}
+                </td>
+                <td className="border-2 text-center">
                   {order.name}
                   <br />
                   {order.streetAddress}
@@ -43,7 +46,16 @@ export default function OrdersPage() {
                   {order.phoneNumber}
                 </td>
 
-                <td>{order.name}</td>
+                <td className="border-2 text-center">
+                  {order.line_items.map((o, i) => (
+                    <div key={i}>{o.price_data.product_data.name}</div>
+                  ))}
+                </td>
+                <td className="text-center border-2">
+                  {order.line_items.map((o, i) => (
+                    <div key={i}>{o.quantity}</div>
+                  ))}
+                </td>
               </tr>
             ))}
         </tbody>

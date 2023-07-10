@@ -47,6 +47,7 @@ export default function Admins() {
         method: "POST",
         body: JSON.stringify({ adminEmail, userName, image }),
       });
+      console.log(response);
       if (response.ok) {
         Swal.fire({
           position: "top-middle",

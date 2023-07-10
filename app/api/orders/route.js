@@ -9,7 +9,7 @@ export const GET = async (req, res) => {
   if (sess === null) return;
   try {
     await connectToDB();
-    const orders = await Order.find();
+    const orders = await Order.find().sort({ createdAt: -1 });
     return new Response(JSON.stringify(orders), {
       status: 200,
     });

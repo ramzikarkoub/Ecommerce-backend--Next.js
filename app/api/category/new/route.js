@@ -6,7 +6,7 @@ import { authOptions } from "../../auth/[...nextauth]/route";
 export const POST = async (req) => {
   const { name, parentCategory, properties } = await req.json();
   // console.log(session);
-  console.log(name, parentCategory, properties);
+
   const sess = await getServerSession(authOptions);
   if (sess === null) return;
   try {

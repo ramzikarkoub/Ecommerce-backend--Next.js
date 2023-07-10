@@ -22,6 +22,8 @@ export default function OrdersPage() {
         <thead className="text-sm text-gray-600 uppercase border-b border-gray-200 px-4 py-2">
           <tr>
             <th>Date</th>
+            <th>paid</th>
+
             <th>Recipient</th>
             <th>Products</th>
             <th>Quantity</th>
@@ -34,6 +36,7 @@ export default function OrdersPage() {
                 <td className="border-2 text-center">
                   {new Date(order.createdAt).toLocaleString()}
                 </td>
+                <td>{order.paid ? "yes" : "no"}</td>
                 <td className="border-2 text-center">
                   {order.name}
                   <br />

@@ -22,18 +22,22 @@ export const GET = async (req, res) => {
 
 export const POST = async (req) => {
   const sess = await getServerSession(authOptions);
+
   if (sess === null) return;
   const { adminEmail, userName, image } = await req.json();
+
   try {
     await connectToDB();
+
     const newUser = new User({
       email: adminEmail,
       username: userName,
-      image: image,
+      image,
     });
     await newUser.save();
     return new Response(JSON.stringify(newUser), { status: 201 });
   } catch (error) {
+    console.log("eroor", error);
     return new Response("Failed to create a new user", { status: 500 });
   }
 };

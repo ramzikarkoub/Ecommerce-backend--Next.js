@@ -37,7 +37,7 @@ export const POST = async (req) => {
     await newUser.save();
     return new Response(JSON.stringify(newUser), { status: 201 });
   } catch (error) {
-    console.log("eroor", error);
+    console.log("eroooooooooor", error);
     return new Response("Failed to create a new user", { status: 500 });
   }
 };

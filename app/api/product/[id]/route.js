@@ -42,13 +42,14 @@ export const PATCH = async (request, { params }) => {
     existingProduct.description = description;
     existingProduct.price = price;
     existingProduct.images = images;
-    existingProduct.category = category;
+    existingProduct.category = category || null;
     existingProduct.properties = properties;
 
     await existingProduct.save();
 
     return new Response("Successfully updated the Product", { status: 200 });
   } catch (error) {
+    console.log("hahahahhahahahh", error);
     return new Response("Error Updating Product", { status: 500 });
   }
 };

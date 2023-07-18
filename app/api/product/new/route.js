@@ -2,11 +2,15 @@ import { connectToDB } from "/utils/database";
 import Product from "/models/product";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../../auth/[...nextauth]/route";
+import mongoose from "mongoose";
+
 export const POST = async (req) => {
   const sess = await getServerSession(authOptions);
   if (sess === null) return;
   const { userId, title, description, price, images, category, properties } =
     await req.json();
+  console.log(userId, title, description, price, images, category, properties);
+  const categoryId = category ? new mongoose.Types.ObjectId(category) : null;
   try {
     await connectToDB();
     const newProduct = new Product({
@@ -15,7 +19,7 @@ export const POST = async (req) => {
       description,
       price,
       images,
-      category,
+      category: categoryId,
       properties,
     });
     await newProduct.save();

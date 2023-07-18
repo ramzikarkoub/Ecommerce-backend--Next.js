@@ -14,31 +14,49 @@ export default function Admins() {
   const fetchAdmins = async () => {
     const response = await fetch("api/admins");
     const data = await response.json();
-    console.log(data);
+
     setAdmins(data);
   };
   useEffect(() => {
     fetchAdmins();
   }, []);
+  console.log(admins);
 
   const handleDelite = async (ad) => {
     console.log(ad);
-    const hasConfirmed = confirm("Are you sure you want to delete this admin?");
-    if (hasConfirmed) {
+    // const hasConfirmed = confirm("Are you sure you want to delete this admin?");
+    const hasConfirmed = Swal.fire({
+      title: `Do you want to delete ${ad.username} ?`,
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+      customClass: {
+        actions: "my-actions",
+        confirmButton: "order-2",
+        denyButton: "order-3",
+      },
+    });
+    console.log(hasConfirmed);
+    if ((await hasConfirmed).isConfirmed) {
       try {
         const response = await fetch(`api/admins/${ad._id.toString()}`, {
           method: "DELETE",
         });
         const FiltredAdmins = admins.filter((i) => i._id !== ad._id);
+        Swal.fire({
+          position: "top-middle",
+          icon: "success",
+          title: "Admin deleted!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        deleted;
         setAdmins(FiltredAdmins);
       } catch (error) {
         console.log(error);
       }
     }
   };
-  console.log(adminEmail);
-  console.log(userName);
-  console.log(image);
 
   const saveAdmin = async (e) => {
     e.preventDefault();
@@ -47,7 +65,7 @@ export default function Admins() {
         method: "POST",
         body: JSON.stringify({ adminEmail, userName, image }),
       });
-      console.log(response);
+
       if (response.ok) {
         Swal.fire({
           position: "top-middle",
@@ -57,10 +75,8 @@ export default function Admins() {
           timer: 1500,
         });
         // fetchCategories();
-        console.log(admins);
       }
     } catch (error) {
-      console.log(error);
     } finally {
       fetchAdmins();
     }
@@ -104,7 +120,6 @@ export default function Admins() {
     }
   };
 
-  console.log(admins);
   return (
     <div>
       <form onSubmit={saveAdmin}>

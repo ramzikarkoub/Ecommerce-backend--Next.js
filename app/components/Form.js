@@ -132,6 +132,7 @@ export default function Form({
       }
     } else {
       try {
+        console.log(session);
         const response = await fetch("/api/product/new", {
           method: "POST",
           body: JSON.stringify({

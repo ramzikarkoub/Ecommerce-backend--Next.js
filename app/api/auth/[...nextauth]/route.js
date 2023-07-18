@@ -48,7 +48,8 @@ export const authOptions = {
     //     return false;
     //   }
     // },
-    session: async ({ session, token, user }) => {
+    session: async ({ session: session, token, user }) => {
+      console.log("sesssssssssion", token, user);
       try {
         await connectToDB();
         // console.log("sessionnsssssss", session);

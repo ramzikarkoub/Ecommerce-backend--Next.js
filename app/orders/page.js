@@ -23,16 +23,14 @@ export default function OrdersPage() {
           <tr>
             <th>Date</th>
             <th>paid</th>
-
             <th>Recipient</th>
             <th>Products</th>
-            <th>Quantity</th>
           </tr>
         </thead>
         <tbody className="basic">
           {orders?.length > 0 &&
             orders.map((order) => (
-              <tr key={order._id}>
+              <tr key={order._id} className="border - 2">
                 <td className="border-2 text-center">
                   {new Date(order.createdAt).toLocaleString()}
                 </td>
@@ -48,17 +46,16 @@ export default function OrdersPage() {
                   <br />
                   {order.phoneNumber}
                 </td>
-
-                <td className="border-2 text-center">
-                  {order.line_items.map((o, i) => (
-                    <div key={i}>{o.price_data.product_data.name}</div>
-                  ))}
-                </td>
-                <td className="text-center border-2">
-                  {order.line_items.map((o, i) => (
-                    <div key={i}>{o.quantity}</div>
-                  ))}
-                </td>
+                {order.items?.map((o, i) => (
+                  <td className="  flex border-1 justify-start">
+                    <tr className=" mr-20 ">{o.name}</tr>
+                    {o.properties?.map((p, index) => (
+                      <tr key={index} className=" mr-5">
+                        **{p.name}: {p.value} **
+                      </tr>
+                    ))}
+                  </td>
+                ))}
               </tr>
             ))}
         </tbody>

@@ -11,9 +11,7 @@ export default function OrdersPage() {
   };
   useEffect(() => {
     fetchOrder();
-    console.log(orders);
   }, []);
-  console.log(orders);
 
   return (
     <div>
@@ -30,7 +28,10 @@ export default function OrdersPage() {
         <tbody className="basic">
           {orders?.length > 0 &&
             orders.map((order) => (
-              <tr key={order._id} className="border - 2">
+              <tr
+                key={order._id}
+                className="border - 2 justify-center align-center"
+              >
                 <td className="border-2 text-center">
                   {new Date(order.createdAt).toLocaleString()}
                 </td>
@@ -47,12 +48,12 @@ export default function OrdersPage() {
                   {order.phoneNumber}
                 </td>
                 {order.items?.map((o, i) => (
-                  <td className="  flex border-1 justify-start">
-                    <tr className=" mr-20 ">{o.name}</tr>
+                  <td key={i} className="  flex border-1 ">
+                    <div className=" mr-20 ">{o.name}</div>
                     {o.properties?.map((p, index) => (
-                      <tr key={index} className=" mr-5">
+                      <div key={index} className=" mr-5">
                         **{p.name}: {p.value} **
-                      </tr>
+                      </div>
                     ))}
                   </td>
                 ))}

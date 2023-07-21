@@ -41,10 +41,8 @@ export default function Nav() {
           </Link>
           <nav className="flex flex-col gap-2">
             <Link
-              className={
-                pathname.includes("dashboard") ? activeLink : inactiveLink
-              }
-              href={"/dashboard"}
+              className={pathname.includes("/") ? activeLink : inactiveLink}
+              href={"/"}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

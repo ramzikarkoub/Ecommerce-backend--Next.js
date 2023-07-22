@@ -66,57 +66,87 @@ const Home = () => {
     );
   }
   return (
-    <div>
+    <>
       <UserInfo />
-      <div className="flex justify-evenly items-center p-8">
-        <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3">
-          <h2 className=" text-xlg font-bold  text-gray-600">Today's Orders</h2>
-          <div className=" text-3xl font-bold text-blue-800 pt-3">
-            {todayOrders.length}
+      <div className="p-10 flex flex-col content-center items-start">
+        <h3 className="font-bold text-gray-600">Orders</h3>
+        <div className="flex justify-evenly gap-10 pb-6 ml-2">
+          <div className=" w-80 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3 shadow-md">
+            <h2 className="text-xlg font-bold text-gray-600">TODAY</h2>
+            <div className="text-3xl font-bold text-blue-800 pt-3">
+              {todayOrders.length}
+            </div>
+            <div className="text-sm text-gray-400">
+              {todayOrders.length} {todayOrders.length > 0 ? "orders" : "order"}{" "}
+              today
+            </div>
+          </div>
+          <div className="w-80 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3 shadow-md">
+            <h2 className="text-xlg font-bold text-gray-600">THIS WEEK</h2>
+            <div className="text-3xl font-bold text-blue-800 pt-3">
+              {weekOrders.length}
+            </div>
+            <div className="text-sm text-gray-400">
+              {weekOrders.length} orders this week
+            </div>
+          </div>
+          <div className="w-80 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3 shadow-md">
+            <h2 className="text-xlg font-bold text-gray-600">THIS MONTH</h2>
+            <div className="text-3xl font-bold text-blue-800 pt-3">
+              {monthOrders.length}
+            </div>
+            <div className="text-sm text-gray-400">
+              {monthOrders.length} orders this month
+            </div>
           </div>
         </div>
-        <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3">
-          <h2 className=" text-xlg font-bold  text-gray-600">
-            This Week's Orders
-          </h2>
-          <div className=" text-3xl font-bold text-blue-800 pt-3">
-            {weekOrders.length}
+        <h3 className="font-bold text-gray-600">Revenue</h3>
+        <div className="flex justify-evenly gap-10  pb-6 ml-2">
+          <div className=" w-80 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3 shadow-md">
+            <h2 className="text-xlg font-bold text-gray-600">TODAY</h2>
+            <div className="text-3xl font-bold text-blue-800 pt-3">
+              {todayOrders
+                .reduce((acc, cur) => acc + cur.cartTotal, 0)
+                .toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
+            </div>
+            <div className="text-sm text-gray-400">
+              {todayOrders.length} orders today
+            </div>
           </div>
-        </div>
-        <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3">
-          <h2 className=" text-xlg font-bold  text-gray-600">
-            This Month's Orders
-          </h2>
-          <div className=" text-3xl font-bold text-blue-800 pt-3">
-            {monthOrders.length}
+          <div className="w-80 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3 shadow-md">
+            <h2 className="text-xlg font-bold text-gray-600">THIS WEEK</h2>
+            <div className="text-3xl font-bold text-blue-800 pt-3">
+              {weekOrders
+                .reduce((acc, cur) => acc + cur.cartTotal, 0)
+                .toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
+            </div>
+            <div className="text-sm text-gray-400">
+              {weekOrders.length} orders this week
+            </div>
+          </div>
+          <div className="w-80 flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3 shadow-md">
+            <h2 className="text-xlg font-bold text-gray-600">THIS MONTH</h2>
+            <div className="text-3xl font-bold text-blue-800 pt-3">
+              {monthOrders
+                .reduce((acc, cur) => acc + cur.cartTotal, 0)
+                .toLocaleString("en-US", {
+                  style: "currency",
+                  currency: "USD",
+                })}
+            </div>
+            <div className="text-sm text-gray-400">
+              {monthOrders.length} orders this month
+            </div>
           </div>
         </div>
       </div>
-      <div className="flex justify-evenly p-10">
-        <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3">
-          <h2 className=" text-xlg font-bold  text-gray-600">Today's Orders</h2>
-          <div className=" text-3xl font-bold text-blue-800 pt-3">
-            {todayOrders.reduce((acc, cur) => acc + cur.cartTotal, 0)}
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3">
-          <h2 className=" text-xlg font-bold  text-gray-600">
-            This Week's Orders
-          </h2>
-          <div className=" text-3xl font-bold text-blue-800 pt-3">
-            {weekOrders.reduce((acc, cur) => acc + cur.cartTotal, 0)}
-          </div>
-        </div>
-        <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-3">
-          <h2 className=" text-xlg font-bold  text-gray-600">
-            This Month's Orders
-          </h2>
-          <div className=" text-3xl font-bold text-blue-800 pt-3">
-            {monthOrders.reduce((acc, cur) => acc + cur.cartTotal, 0)}
-          </div>
-        </div>
-      </div>
-    </div>
+    </>
   );
 };
 

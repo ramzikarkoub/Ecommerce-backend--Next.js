@@ -57,25 +57,25 @@ export default function Dashboard() {
   return (
     <div>
       <UserInfo />
+      hjhjhjhj
       <div className="flex justify-evenly items-center p-10">
         <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-8">
-          <h2 className=" text-xlg font-bold  text-gray-600">Today's Orders</h2>
+          <h2 className=" text-xlg font-bold  text-gray-600">ToooooODAY</h2>
           <div className=" text-3xl font-bold text-blue-800 pt-5">
             {todayOrders.length}
           </div>
+          <div className=" text-3xl font-bold text-blue-800 pt-5">
+            {todayOrders.length} orders today
+          </div>
         </div>
         <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-8">
-          <h2 className=" text-xlg font-bold  text-gray-600">
-            This Week's Orders
-          </h2>
+          <h2 className=" text-xlg font-bold  text-gray-600">THIS WEEK</h2>
           <div className=" text-3xl font-bold text-blue-800 pt-5">
             {weekOrders.length}
           </div>
         </div>
         <div className="flex flex-col justify-center items-center bg-gray-200 rounded-lg border-2 border-slate-200 p-8">
-          <h2 className=" text-xlg font-bold  text-gray-600">
-            This Month's Orders
-          </h2>
+          <h2 className=" text-xlg font-bold  text-gray-600">THIS MONTH</h2>
           <div className=" text-3xl font-bold text-blue-800 pt-5">
             {monthOrders.length}
           </div>

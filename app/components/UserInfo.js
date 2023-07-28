@@ -1,12 +1,11 @@
 import React from "react";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 
 export default function UserInfo() {
   const { data: session } = useSession();
 
   return (
     <div className="flex justify-between">
-      {/* <button onClick={() => signOut()}>log out</button> */}
       <h2 className="text-pink-900">
         Hello, <b>{session?.user?.name}</b>
       </h2>

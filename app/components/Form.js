@@ -4,13 +4,8 @@ import ClipLoader from "react-spinners/ClipLoader";
 import { useState, useEffect } from "react";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
-import { FileUpload } from "primereact/fileupload";
-import axios from "axios";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useSession } from "next-auth/react";
-
-import { useS3Upload, getImageData } from "next-s3-upload";
-import Image from "next/image";
 
 export default function Form({
   // productId,
@@ -37,21 +32,6 @@ export default function Form({
   const [productProperties, setProductProperties] = useState(
     assignedProperties || {}
   );
-
-  // console.log(productId);
-
-  // console.log(title);
-  // function handleOnChange(changeEvent) {
-  //   const reader = new FileReader();
-
-  //   // reader.onload = function (onLoadEvent) {
-  //   //   setImageSrc(onLoadEvent.target.result);
-  //   //   setUploadData(undefined);
-  //   // };
-
-  //   // reader.readAsDataURL(changeEvent.target.files[0]);
-  // }
-  // console.log(images);
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -87,15 +67,10 @@ export default function Form({
         ).then((r) => r.json());
 
         setImages((d) => [...d, data.secure_url]);
-        // setProduct((pro) => ({
-        //   ...pro,
-        //   images: data.secure_url,
-        // }));
+
         setUploadData(data);
-        // console.log(data.secure_url);
+
         console.log(data);
-        // console.log(imageSrc);
-        // console.log(product);
       }
       setIsUploading(false);
     }
@@ -160,14 +135,12 @@ export default function Form({
   let propertiesToFill = [];
   if (categories.length > 0 && category) {
     let prop = categories.find(({ _id }) => _id === category);
-    // console.log(properties);
     propertiesToFill.push(...prop.properties);
     console.log(propertiesToFill);
     if (prop.parentCategory?._id) {
       let parentProp = categories.find(
         ({ _id }) => _id === prop?.parentCategory?._id
       );
-      // console.log(properties);
       propertiesToFill.push(...parentProp.properties);
       console.log(propertiesToFill);
     }

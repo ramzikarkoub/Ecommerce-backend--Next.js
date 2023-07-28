@@ -1,10 +1,9 @@
 import { connectToDB } from "utils/database";
 import User from "models/user";
 import { getServerSession } from "next-auth";
-import { authOptions, isAdminRequest } from "../auth/[...nextauth]/route";
+import { authOptions } from "../auth/[...nextauth]/route";
 
 export const GET = async (req, res) => {
-  // console.log("hkrhkjrtg", params);
   const sess = await getServerSession(authOptions);
   if (sess === null) return;
   try {

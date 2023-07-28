@@ -16,16 +16,12 @@ export default function UpdateProduct() {
       const response = await fetch(`/api/product/${productId}`);
       const data = await response.json();
       console.log(data);
-      // console.log(data);
       setProduct(data);
       console.log(response);
     };
-    // console.log(response);
-    // console.log(data);
 
     if (productId) getProductDetails();
   }, [productId]);
-  // console.log(product);
 
   return (
     <div>

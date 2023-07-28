@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 
-import { signIn, signOut, useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import UserInfo from "./components/UserInfo";
 
 const Home = () => {

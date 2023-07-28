@@ -1,6 +1,5 @@
 import { connectToDB } from "/utils/database";
 import Order from "/models/order";
-import React from "react";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/route";
 

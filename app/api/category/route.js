@@ -18,19 +18,3 @@ export const GET = async (request) => {
     });
   }
 };
-
-// // DELETE
-// export const DELETE = async (req) => {
-//   const query = req.query;
-//   const { id } = query;
-//   try {
-//     await connectToDB();
-
-//     // Find the prompt by ID and remove it
-//     await Category.findByIdAndRemove({ _id: id });
-
-//     return new Response("Product deleted successfully", { status: 200 });
-//   } catch (error) {
-//     return new Response("Error deleting Category", { status: 500 });
-//   }
-// };

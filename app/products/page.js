@@ -15,10 +15,7 @@ export default function Products() {
     };
     fetchProducts();
   }, []);
-  console.log(products);
-  // const handleEdit = (product) => {
-  //   router.push(`/update-product?id=${product._id}`);
-  // };
+
   const handleDelite = async (product) => {
     const hasConfirmed = confirm(
       "Are you sure you want to delete this product?"
@@ -42,7 +39,6 @@ export default function Products() {
       <Link href={"products/new"} className="btn-primary">
         Add new product
       </Link>
-      {/* <ProductsList data={data} /> */}
       <table className="basic mt-6">
         <thead className="text-sm text-gray-600 uppercase border-b border-gray-200 px-4 py-2">
           <tr>

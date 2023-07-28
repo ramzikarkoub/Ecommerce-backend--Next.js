@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-// import { signIn, signOut, useSession } from "next-auth/react";
 import UserInfo from "../components/UserInfo";
 
 export default function Dashboard() {
@@ -52,8 +51,7 @@ export default function Dashboard() {
   useEffect(() => {
     fetchOrders();
   }, []);
-  console.log(monthOrders);
-  // const { data: session } = useSession();
+
   return (
     <div>
       <UserInfo />

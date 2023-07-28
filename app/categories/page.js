@@ -1,20 +1,14 @@
 "use client";
 import Swal from "sweetalert2";
-import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
-// import Link from "next/link";
-// // import { useRouter } from "next/navigation";
-// import axios from "axios";
 
 export default function Categories() {
   const [isSubmitting, setIsSubmitting] = useState(false);
-  // const router = useRouter();
   const [editingMode, setEditingMode] = useState(false);
   const [categories, setCategories] = useState([]);
   const [editedCategory, setEditedCategory] = useState(null);
   const [properties, setProperties] = useState([]);
   const [name, setName] = useState("");
-  // const existingCate = editedCategory?.parentCategory?._id;
   const [parentCategory, setParentCategory] = useState("");
 
   // get categories
@@ -41,7 +35,6 @@ export default function Categories() {
       confirmButtonText: "Yes, delete it!",
     }).then(async (result) => {
       if (result.isConfirmed) {
-        // Swal.fire("Deleted!", "The category has been deleted.", "success");
         Swal.fire({
           position: "top-middle",
           icon: "success",
@@ -77,13 +70,11 @@ export default function Categories() {
     };
     console.log(data);
     if (editedCategory) {
-      // setEditingMode(true);
       try {
         const response = await fetch(`/api/category/${editedCategory._id}`, {
           method: "PATCH",
           body: JSON.stringify(data),
         });
-        console.log(parentCategory);
         if (response.ok) {
           Swal.fire({
             position: "top-middle",
@@ -92,7 +83,6 @@ export default function Categories() {
             showConfirmButton: false,
             timer: 1500,
           });
-          // fetchCategories();
           console.log(categories);
         }
       } catch (error) {
@@ -116,8 +106,6 @@ export default function Categories() {
             showConfirmButton: false,
             timer: 1500,
           });
-          // fetchCategories();
-          console.log(categories);
         }
       } catch (error) {
         console.log(error);
@@ -158,8 +146,6 @@ export default function Categories() {
         return pIndex !== index;
       });
     });
-    console.log(properties);
-    // console.log(index);
   };
   const handlePropertyNameChange = (index, property, newName) => {
     setProperties((prev) => {
@@ -167,7 +153,6 @@ export default function Categories() {
       newProperties[index].name = newName;
       return newProperties;
     });
-    console.log(properties);
   };
   const handlePropertyValueChange = (index, property, newValue) => {
     setProperties((prev) => {
@@ -176,7 +161,6 @@ export default function Categories() {
       newProperties[index].values = newValue;
       return newProperties;
     });
-    console.log(properties);
   };
 
   return (
@@ -317,10 +301,6 @@ export default function Categories() {
                   <td className="flex">
                     <button
                       className="flex btn-primary mr-2"
-                      // href={
-                      //   ""
-                      //   // `/categories/update-category?id=${category._id}`
-                      // }
                       onClick={() => editCategory(category)}
                       type="button"
                     >

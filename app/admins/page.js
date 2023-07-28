@@ -74,7 +74,6 @@ export default function Admins() {
           showConfirmButton: false,
           timer: 1500,
         });
-        // fetchCategories();
       }
     } catch (error) {
     } finally {
@@ -106,15 +105,6 @@ export default function Admins() {
         ).then((r) => r.json());
 
         setImage(data.secure_url);
-        // setProduct((pro) => ({
-        //   ...pro,
-        //   images: data.secure_url,
-        // }));
-        // setUploadData(data);
-        // console.log(data.secure_url);
-        // console.log(data);
-        // console.log(imageSrc);
-        // console.log(product);
       }
       setIsUploading(false);
     }
@@ -123,7 +113,7 @@ export default function Admins() {
   return (
     <div>
       <form onSubmit={saveAdmin}>
-        <label>Admins page</label>
+        <h1>Admins page</h1>
         <input
           type="text"
           placeholder="Admin email"

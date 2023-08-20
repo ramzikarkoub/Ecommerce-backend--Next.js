@@ -7,12 +7,13 @@ export default function OrdersPage() {
   const fetchOrder = async () => {
     const response = await fetch("api/orders");
     const data = await response.json();
+    console.log(data);
     setOrders(data);
+    console.log(orders);
   };
   useEffect(() => {
     fetchOrder();
   }, []);
-
   return (
     <div>
       <h1>Orders</h1>
@@ -50,11 +51,12 @@ export default function OrdersPage() {
                 {order.items?.map((o, i) => (
                   <td key={i} className="  flex border-1 ">
                     <div className=" mr-20 ">{o.name}</div>
-                    {o.properties?.map((p, index) => (
-                      <div key={index} className=" mr-5">
-                        **{p.name}: {p.value} **
-                      </div>
-                    ))}
+                    {Array.isArray(o.properties) &&
+                      o.properties.map((p, index) => (
+                        <div key={index} className=" mr-5">
+                          **{p.name}: {p.value} **
+                        </div>
+                      ))}
                   </td>
                 ))}
               </tr>
